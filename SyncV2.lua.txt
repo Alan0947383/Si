@@ -3,8 +3,11 @@ local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService('TweenService')
 local UserInputService = game:GetService("UserInputService")
+local LibVersion
+local LibType
+local ServiceID
 
-local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service='..Options.ServiceID..'&core='..Options.LibType..'&param='..Options.LibVersion))()
+local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service='..ServiceID..'&core='..LibType..'&param='..LibVersion))()
 local Notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/x9PSwiftz/Panda/main/Notification.lua"))()
 
 -- { Functions } --
@@ -68,19 +71,14 @@ function SyncUI:SaveKey(name, content)
   wait(2)
   Notify.New("Key Saved!")
 end
-
-local ServiceID
-local LibType
-local LibVersion
-
 function SyncUI:Create(Options)
   -- [ Options ] --
   ServiceID = Options.ServiceID
+  LibType = Options.LibType
+  LibVersion = Options.LibVersion
   Callback = Options.Callback or function() end
   SaveKey = Options.SaveKey
   Name = Options.Name
-  LibType = Options.LibType
-  LibVersion = Options.LibVersion
   Discord = Options.Discord
   local DiscordV2 = Discord
   
@@ -299,8 +297,8 @@ function SyncUI:Create(Options)
   
   -- [ GUI Functions ] --
   Object.GetKey.MouseButton1Click:Connect(function()
-    Object.KeyBox.Text = PandaAuth:GetKey(ServiceId)
-    setclipboard(PandaAuth:GetKey(ServiceId))
+    Object.KeyBox.Text = PandaAuth:GetKey(ServiceID)
+    setclipboard(PandaAuth:GetKey(ServiceID))
   end)
   Object.Login.MouseButton1Click:Connect(function()
     Login()
@@ -426,11 +424,11 @@ function SyncUI:Create(Options)
         return Notify.New("Haha kid want to bypass PandaKeySystem v2", 2) 
       end
       oldstring = RandomString(10)
-      if PandaAuth:GetKey(ServiceId) == nil or PandaAuth:ValidateKey(ServiceId, Object.KeyBox.Text .. RandomString(10)) then
+      if PandaAuth:GetKey(ServiceID) == nil or PandaAuth:ValidateKey(ServiceID, Object.KeyBox.Text .. RandomString(10)) then
         Notify.New("Haha kid wants to bypass PandaKeySystem v2", 2)
         wait(2)
         while true do end
-      elseif PandaAuth:ValidateKey(ServiceId, Object.KeyBox.Text) then
+      elseif PandaAuth:ValidateKey(ServiceID, Object.KeyBox.Text) then
         print("[ " .. Name .. " ]" .. " Correct Key")
         Notify.New("[" .. Name .. "]: Correct Key", 5)
         SyncUI:SaveKey(Name .. ".txt", Object.KeyBox.Text)
