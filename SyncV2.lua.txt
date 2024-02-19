@@ -74,8 +74,6 @@ end
 function SyncUI:Create(Options)
   -- [ Options ] --
   ServiceID = Options.ServiceID
-  LibType = Options.LibType
-  LibVersion = Options.LibVersion
   Callback = Options.Callback or function() end
   SaveKey = Options.SaveKey
   Name = Options.Name
