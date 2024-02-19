@@ -70,7 +70,7 @@ function SyncUI:SaveKey(name, content)
 end
 function SyncUI:Create(Options)
   -- [ Options ] --
-  ServiceId = Options.Service
+  ServiceID = Options.Service
   Callback = Options.Callback or function() end
   SaveKey = Options.SaveKey
   Name = Options.Name
