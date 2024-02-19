@@ -68,6 +68,11 @@ function SyncUI:SaveKey(name, content)
   wait(2)
   Notify.New("Key Saved!")
 end
+
+local ServiceID
+local LibType
+local LibVersion
+
 function SyncUI:Create(Options)
   -- [ Options ] --
   ServiceID = Options.ServiceID
