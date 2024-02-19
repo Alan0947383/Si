@@ -70,12 +70,12 @@ function SyncUI:SaveKey(name, content)
 end
 function SyncUI:Create(Options)
   -- [ Options ] --
-  ServiceID = Options.Service
+  ServiceID = Options.ServiceID
   Callback = Options.Callback or function() end
   SaveKey = Options.SaveKey
   Name = Options.Name
-  LibType = Options.Name
-  LibVersion = Options.Name
+  LibType = Options.LibType
+  LibVersion = Options.LibVersion
   Discord = Options.Discord
   local DiscordV2 = Discord
   
