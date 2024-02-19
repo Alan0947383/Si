@@ -294,8 +294,8 @@ function SyncUI:Create(Options)
   
   -- [ GUI Functions ] --
   Object.GetKey.MouseButton1Click:Connect(function()
-    Object.KeyBox.Text = PandaAuth:GetKey(Service)
-    setclipboard(PandaAuth:GetKey(Service))
+    Object.KeyBox.Text = PandaAuth:GetKey(ServiceId)
+    setclipboard(PandaAuth:GetKey(ServiceId))
   end)
   Object.Login.MouseButton1Click:Connect(function()
     Login()
@@ -421,11 +421,11 @@ function SyncUI:Create(Options)
         return Notify.New("Haha kid want to bypass PandaKeySystem v2", 2) 
       end
       oldstring = RandomString(10)
-      if PandaAuth:GetKey(Service) == nil or PandaAuth:ValidateKey(Service, Object.KeyBox.Text .. RandomString(10)) then
+      if PandaAuth:GetKey(ServiceId) == nil or PandaAuth:ValidateKey(ServiceId, Object.KeyBox.Text .. RandomString(10)) then
         Notify.New("Haha kid wants to bypass PandaKeySystem v2", 2)
         wait(2)
         while true do end
-      elseif PandaAuth:ValidateKey(Service, Object.KeyBox.Text) then
+      elseif PandaAuth:ValidateKey(ServiceId, Object.KeyBox.Text) then
         print("[ " .. Name .. " ]" .. " Correct Key")
         Notify.New("[" .. Name .. "]: Correct Key", 5)
         SyncUI:SaveKey(Name .. ".txt", Object.KeyBox.Text)
